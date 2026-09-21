@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7a1f2b" />
+  <meta name="description" content="وب‌سایت رسمی رسول موسوی خادم؛ وکیل پایه یک دادگستری و متخصص حقوق تجارت بین‌الملل، حقوق رمز ارز، قاچاق کالا و ارز، قراردادهای بین‌المللی، داوری بین‌المللی و Compliance." />
+  <meta property="og:title" content="RMK — Commercial LAW | رسول موسوی خادم" />
+  <meta property="og:description" content="حقوق تجارت بین‌الملل، قرارداد، داوری و تطبیق با رویکردی فرامرزی." />
+  <meta property="og:type" content="website" />
+  <title>RMK — Commercial LAW | رسول موسوی خادم</title>
+
+  <style>
+    /* =========================
+       RMK — Commercial LAW
+       Premium single-file homepage
+       ========================= */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --burgundy: #7a1f2b;
+      --burgundy-2: #962d3d;
+      --oxblood: #2a0f14;
+      --gold: #c8a96b;
+      --gold-light: #e3cd98;
+      --ivory: #f6f0e6;
+      --ivory-2: #efe6d7;
+      --charcoal: #26221f;
+      --sage: #748474;
+      --white: #fffdfa;
+      --border: rgba(42, 15, 20, .14);
+      --shadow: 0 22px 70px rgba(42, 15, 20, .12);
+      --max: 1240px;
+      --header-h: 84px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    html[data-theme="dark"] {
+      --ivory: #171314;
+      --ivory-2: #211a1b;
+      --charcoal: #f2ece2;
+      --white: #221b1d;
+      --border: rgba(227,205,152,.15);
+      --shadow: 0 22px 70px rgba(0,0,0,.34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: "Vazirmatn", "DM Sans", system-ui, sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background .35s var(--ease), color .35s var(--ease);
+    }
+
+    body.no-scroll { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img, svg { max-width: 100%; display: block; }
+
+    ::selection { background: rgba(200,169,107,.34); color: var(--charcoal); }
+
+    /* Progress */
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 3px;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--gold), var(--burgundy), var(--gold));
+      z-index: 1002;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 1001;
+      background:
+        radial-gradient(circle at 70% 25%, rgba(200,169,107,.13), transparent 26%),
+        radial-gradient(circle at 25% 80%, rgba(122,31,43,.24), transparent 34%),
+        var(--oxblood);
+      color: var(--ivory);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      transition: opacity 1s var(--ease), visibility 1s var(--ease);
+    }
+    .loader.is-done { opacity: 0; visibility: hidden; }
+    .loader-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      background: #12080b;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity .28s ease;
+    }
+    .loader.video-ready .loader-video { opacity: 1; }
+    .loader-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(42,15,20,.02), rgba(42,15,20,.16));
+      pointer-events: none;
+      z-index: 1;
+    }
+    .loader-progress-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 9vh;
+      transform: translateX(-50%);
+      width: min(360px, 66vw);
+      z-index: 3;
+      text-align: center;
+    }
+    .loader-progress {
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(232,219,190,.24);
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(232,219,190,.10), 0 6px 24px rgba(0,0,0,.16);
+    }
+    .loader-progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #d2be91, #eadbb9, #d2be91);
+      box-shadow: 0 0 18px rgba(232,219,190,.34);
+      transition: width .08s linear;
+    }
+    .loader-loading-text {
+      margin-top: 12px;
+      color: #eadbb9;
+      font-size: .67rem;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-indent: .42em;
+      opacity: .88;
+    }
+    .loader-fallback { display:none; }
+    .loader::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(200,169,107,.06), transparent 24%), linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.12));
+      pointer-events: none;
+      z-index: 1;
+    }
+    .loader-inner { position: relative; text-align: center; z-index: 3; display:none; }
+    .loader-mark {
+      width: 64px; height: 64px;
+      margin: 0 auto 22px;
+      border: 1px solid rgba(200,169,107,.68);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      color: var(--gold-light);
+      letter-spacing: .12em;
+      font-weight: 700;
+      animation: floatMark 1.6s ease-in-out infinite;
+    }
+    .loader-title {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.7rem, 4vw, 3.2rem);
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+    .loader-title span { color: var(--gold-light); }
+    .loader-sub {
+      margin-top: 10px;
+      font-size: .78rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,.62);
+    }
+    .loader-line {
+      width: min(280px, 62vw);
+      height: 1px;
+      margin: 26px auto 0;
+      background: rgba(200,169,107,.18);
+      overflow: hidden;
+    }
+    .loader-line::after {
+      content: "";
+      display: block;
+      width: 45%;
+      height: 100%;
+      background: var(--gold);
+      animation: loadLine 1.7s var(--ease) both;
+    }
+
+    @keyframes loaderFrame { to { transform: scale(1); } }
+    @keyframes loadLine { from { transform: translateX(-120%); } to { transform: translateX(240%); } }
+    @keyframes floatMark { 50% { transform: translateY(-5px); } }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      height: var(--header-h);
+      z-index: 100;
+      transition: background .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease);
+    }
+    header.scrolled {
+      background: color-mix(in srgb, var(--ivory) 92%, transparent);
+      backdrop-filter: blur(18px) saturate(120%);
+      box-shadow: 0 10px 35px rgba(42,15,20,.08);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      width: min(var(--max), calc(100% - 40px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: max-content; }
+    .brand-seal {
+      width: 42px; height: 42px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      color: var(--burgundy);
+      background: var(--ivory);
+      box-shadow: 0 7px 20px rgba(42,15,20,.08);
+      font-weight: 800; font-size: .72rem;
+      letter-spacing: .07em;
+      overflow: hidden;
+    }
+    .brand-seal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+    .brand-text { display: grid; line-height: 1.12; }
+    .brand-text strong {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.02rem;
+      letter-spacing: .08em;
+    }
+    .brand-text small { font-size: .63rem; color: var(--sage); letter-spacing: .15em; }
+    nav.main-nav { display: flex; gap: 5px; align-items: center; }
+    .nav-link {
+      position: relative;
+      padding: 9px 11px;
+      color: color-mix(in srgb, var(--charcoal) 76%, transparent);
+      font-size: .88rem;
+      transition: color .25s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 11px; right: 11px; bottom: 3px;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s var(--ease);
+    }
+    .nav-link:hover { color: var(--burgundy); }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .icon-btn, .lang-btn, .menu-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--white) 76%, transparent);
+      color: var(--charcoal);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      transition: all .25s ease;
+    }
+    .icon-btn:hover, .lang-btn:hover, .menu-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      color: var(--burgundy);
+      box-shadow: 0 10px 25px rgba(42,15,20,.08);
+    }
+    .lang-wrap { position: relative; }
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 190px;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: all .25s var(--ease);
+    }
+    .lang-wrap.open .lang-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-option {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--charcoal);
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: flex; align-items: center; gap: 10px;
+      text-align: start;
+      transition: background .2s ease;
+    }
+    .lang-option:hover { background: var(--ivory-2); }
+    .lang-option { min-height: 48px; }
+    .lang-option .flag { font-size: 1.15rem; }
+    .flag-img, .lang-current-flag {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(42,15,20,.12);
+      background: var(--ivory);
+    }
+    .lang-current-flag {
+      width: 23px;
+      height: 23px;
+      flex-basis: 23px;
+    }
+    .lang-current-code {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+    .lang-code {
+      min-width: 28px;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--burgundy);
+    }
+    .lang-name {
+      font-size: .76rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 19px;
+      border-radius: 13px;
+      border: 1px solid transparent;
+      background: var(--burgundy);
+      color: #fff;
+      font-weight: 700;
+      font-size: .84rem;
+      box-shadow: 0 15px 28px rgba(122,31,43,.22);
+      transition: all .3s var(--ease);
+    }
+    .cta:hover { transform: translateY(-3px); background: var(--burgundy-2); box-shadow: 0 20px 38px rgba(122,31,43,.28); }
+    .cta.secondary { background: transparent; color: var(--burgundy); border-color: rgba(122,31,43,.28); box-shadow: none; }
+    .cta.secondary:hover { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+
+    .menu-btn { display: none; }
+
+    /* Layout */
+    main { position: relative; }
+    .section {
+      position: relative;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 110px 0;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: .76rem;
+      color: var(--burgundy);
+      letter-spacing: .12em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px; height: 1px;
+      background: var(--gold);
+      display: inline-block;
+    }
+    .section-head { max-width: 760px; margin-bottom: 48px; }
+    .section-head h2 {
+      margin: 12px 0 14px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.18;
+      font-weight: 700;
+    }
+    .section-head p { margin: 0; color: color-mix(in srgb, var(--charcoal) 70%, transparent); max-width: 680px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 76% 35%, rgba(200,169,107,.22), transparent 22%),
+        radial-gradient(circle at 16% 75%, rgba(116,132,116,.13), transparent 25%),
+        linear-gradient(180deg, var(--ivory), color-mix(in srgb, var(--ivory) 91%, var(--ivory-2)));
+      overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,107,.18);
+      pointer-events: none;
+    }
+    .hero::before { width: 520px; height: 520px; top: 15%; right: -180px; }
+    .hero::after { width: 340px; height: 340px; bottom: -130px; left: -120px; }
+    .hero-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding-top: 70px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(320px, .86fr);
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid rgba(200,169,107,.45);
+      border-radius: 999px;
+      color: var(--burgundy);
+      background: rgba(255,253,250,.38);
+      backdrop-filter: blur(10px);
+      font-size: .76rem;
+    }
+    .hero h1 {
+      margin: 24px 0 18px;
+      max-width: 870px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: 1.05;
+      letter-spacing: -.02em;
+    }
+    .hero h1 .accent { color: var(--burgundy); }
+    .hero-lead {
+      max-width: 680px;
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      color: color-mix(in srgb, var(--charcoal) 73%, transparent);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-note {
+      margin-top: 25px;
+      display: flex; flex-wrap: wrap; gap: 10px 18px;
+      color: color-mix(in srgb, var(--charcoal) 55%, transparent);
+      font-size: .76rem;
+    }
+    .hero-note span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-note i {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); display: inline-block;
+    }
+    .hero-card {
+      position: relative;
+      min-height: 540px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--oxblood);
+      box-shadow: 0 40px 90px rgba(42,15,20,.28);
+      color: var(--ivory);
+      isolation: isolate;
+      border: 1px solid rgba(200,169,107,.18);
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(200,169,107,.36);
+      border-radius: 22px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(42,15,20,.02) 8%, rgba(42,15,20,.10) 42%, rgba(20,8,11,.88) 100%),
+        linear-gradient(90deg, rgba(20,8,11,.42), transparent 38%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .card-orbit { display:none; }
+    .profile-monogram {
+      position: absolute;
+      inset: 0;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      border: 0;
+      display: block;
+      background: transparent;
+      box-shadow: none;
+      text-align: start;
+    }
+    .profile-monogram strong {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 3.5rem;
+      line-height: .85;
+      letter-spacing: .06em;
+    }
+    .profile-photo {
+      position: absolute;
+      overflow: hidden;
+      background: #1d1416;
+    }
+    .profile-photo > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .profile-photo-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,10,12,.00) 18%, rgba(20,10,12,.06) 34%, rgba(20,10,12,.24) 62%, rgba(20,10,12,.68) 100%);
+      pointer-events: none;
+    }
+    .about-photo { overflow: hidden; }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-photo { box-shadow: 0 18px 40px rgba(42,15,20,.16); }
+
+    .profile-monogram small {
+      display: block;
+      margin-top: 12px;
+      font-size: .6rem;
+      letter-spacing: .25em;
+      color: var(--gold-light);
+    }
+    .hero-card-bottom {
+      position: absolute;
+      left: 40px; right: 40px; bottom: 36px;
+      display: grid;
+      gap: 8px;
+      z-index: 4;
+    }
+    .hero-card-bottom strong { font-family: "Playfair Display", Georgia, serif; font-size: clamp(1.35rem, 2vw, 1.7rem); text-shadow: 0 7px 24px rgba(0,0,0,.28); }
+    .hero-card-bottom small { color: rgba(246,240,230,.78); max-width: 92%; }
+    .card-pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .card-pill {
+      padding: 6px 9px;
+      border: 1px solid rgba(200,169,107,.26);
+      border-radius: 999px;
+      font-size: .66rem;
+      color: rgba(246,240,230,.72);
+    }
+
+    /* Trust ribbon */
+    .ribbon {
+      background: var(--oxblood);
+      color: var(--ivory);
+      border-block: 1px solid rgba(200,169,107,.13);
+      overflow: hidden;
+    }
+    .ribbon-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 14px 0;
+      animation: ribbonMove 28s linear infinite;
+    }
+    .ribbon-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .75rem; letter-spacing: .08em;
+      color: rgba(246,240,230,.77);
+    }
+    .ribbon-item b { color: var(--gold-light); }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+    @keyframes ribbonMove { to { transform: translateX(-50%); } }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(34px, 7vw, 90px);
+      align-items: start;
+    }
+    .about-panel {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--white) 78%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .about-profile-layout {
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .about-portrait {
+      position:relative;
+      min-height:320px;
+      border-radius:20px;
+      overflow:hidden;
+      background:#201518;
+      box-shadow:0 18px 40px rgba(42,15,20,.16);
+    }
+    .about-portrait img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+    }
+    .about-portrait-tag {
+      position:absolute;
+      left:16px;
+      bottom:15px;
+      z-index:2;
+      padding:7px 10px;
+      border:1px solid rgba(227,205,152,.28);
+      border-radius:999px;
+      background:rgba(42,15,20,.55);
+      backdrop-filter:blur(10px);
+      color:var(--gold-light);
+      font-size:.62rem;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+    .about-profile-copy {
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:8px 2px;
+    }
+    .about-profile-kicker {
+      color:var(--burgundy);
+      font-size:.7rem;
+      letter-spacing:.12em;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .about-profile-copy h3 {
+      margin:0 0 5px;
+      font-size:clamp(1.45rem,2.3vw,1.95rem);
+      font-family:"Playfair Display", Georgia, serif;
+    }
+    .about-profile-copy .about-role {
+      margin:0;
+      color:color-mix(in srgb,var(--charcoal) 68%,transparent);
+      font-size:.83rem;
+      line-height:1.8;
+    }
+    .about-profile-copy .credentials { margin-top:22px; }
+    .about-profile-copy .credential {
+      padding:11px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .about-profile-copy .credential:last-child { border-bottom:0; }
+    .about-panel .seal-large {
+      width: 170px; height: 170px; border-radius: 50%;
+      border: 1px solid var(--gold);
+      overflow: hidden;
+      display: grid; place-items: center;
+      color: var(--burgundy);
+      margin-bottom: 22px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.8rem;
+      background: var(--ivory);
+    }
+    .about-panel h3 { margin: 0 0 5px; font-size: 1.2rem; }
+    .about-panel p { margin: 0; color: color-mix(in srgb, var(--charcoal) 68%, transparent); font-size: .9rem; }
+    .credentials { margin-top: 24px; display: grid; gap: 11px; }
+    .credential {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .credential svg { color: var(--gold); margin-top: 4px; }
+    .credential strong { display: block; font-size: .83rem; }
+    .credential span { display: block; color: color-mix(in srgb, var(--charcoal) 60%, transparent); font-size: .76rem; }
+    .about-copy h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      margin: 0 0 15px;
+      line-height: 1.25;
+    }
+    .about-copy p { margin: 0 0 16px; color: color-mix(in srgb, var(--charcoal) 69%, transparent); }
+    .principles {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px; margin-top: 30px;
+    }
+    .principle {
+      padding: 18px;
+      border-top: 1px solid var(--gold);
+      background: color-mix(in srgb, var(--white) 64%, transparent);
+    }
+    .principle strong { display: block; font-size: .84rem; }
+    .principle span { display: block; font-size: .72rem; color: color-mix(in srgb, var(--charcoal) 58%, transparent); margin-top: 5px; }
+
+    /* Services */
+    .services-section { background: linear-gradient(180deg, transparent, rgba(42,15,20,.02)); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service {
+      position: relative;
+      min-height: 245px;
+      padding: 27px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: 0 14px 42px rgba(42,15,20,.055);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s ease;
+    }
+    .service::after {
+      content: "";
+      position: absolute;
+      width: 160px; height: 160px; border-radius: 50%;
+      right: -75px; bottom: -75px;
+      background: rgba(200,169,107,.07);
+      transition: transform .5s var(--ease);
+    }
+    .service:hover { transform: translateY(-8px); box-shadow: 0 30px 70px rgba(42,15,20,.12); border-color: rgba(200,169,107,.55); }
+    .service:hover::after { transform: scale(1.3); }
+    .service-icon {
+      width: 46px; height: 46px; border-radius: 14px;
+      border: 1px solid rgba(200,169,107,.44);
+      display: grid; place-items: center;
+      color: var(--burgundy);
+      background: var(--ivory);
+      margin-bottom: 20px;
+    }
+    .service h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .service p { margin: 0; color: color-mix(in srgb, var(--charcoal) 62%, transparent); font-size: .82rem; }
+    .service-index {
+      position: absolute; top: 19px; left: 23px;
+      font-size: .64rem; letter-spacing: .12em; color: var(--gold);
+      font-weight: 800;
+    }
+
+    /* Feature / split */
+    .split {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .feature-dark, .feature-light {
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 48px);
+      min-height: 430px;
+    }
+    .feature-dark {
+      background: var(--oxblood);
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-brand-mark {
+      position:absolute;
+      left:28px;
+      bottom:24px;
+      width:185px;
+      max-width:42%;
+      height:auto;
+      opacity:.085;
+      pointer-events:none;
+      user-select:none;
+    }
+    .feature-dark .panel-brand-mark {
+      left:22px;
+      bottom:20px;
+      width:190px;
+      opacity:.10;
+      z-index:0;
+    }
+    .feature-dark > :not(.panel-brand-mark) { position:relative; z-index:1; }
+    .feature-dark::before {
+      content:"";
+      position:absolute; width:330px; height:330px; border:1px solid rgba(200,169,107,.2);
+      border-radius:50%; left:-120px; bottom:-160px;
+    }
+    .feature-dark h3, .feature-light h3 { font-family:"Playfair Display", Georgia, serif; font-size:2rem; margin:0 0 14px; }
+    .feature-dark p, .feature-light p { opacity:.72; font-size:.86rem; }
+    .feature-list { margin: 26px 0 0; display: grid; gap: 12px; }
+    .feature-item { display:flex; gap:10px; align-items:flex-start; font-size:.8rem; }
+    .feature-item svg { color:var(--gold); flex:0 0 auto; margin-top:3px; }
+    .feature-light {
+      border:1px solid var(--border);
+      background: var(--white);
+    }
+    .risk-map {
+      display:grid; gap:10px; margin-top:24px;
+    }
+    .risk-step {
+      display:grid; grid-template-columns: 32px 1fr; gap:10px; align-items:center;
+      padding:11px 12px; border:1px solid var(--border); border-radius:13px;
+    }
+    .risk-step b {
+      width:28px;height:28px;border-radius:9px;
+      background:var(--ivory);color:var(--burgundy);
+      display:grid;place-items:center;font-size:.72rem;
+    }
+    .risk-step span { font-size:.77rem; }
+
+    /* Articles */
+    .articles-top { display:flex; justify-content:space-between; gap:20px; align-items:end; margin-bottom:28px; }
+    .articles-grid {
+      display:grid; grid-template-columns: 1.3fr .7fr; gap:16px;
+    }
+    .article {
+      position:relative; overflow:hidden;
+      border:1px solid var(--border); border-radius:22px;
+      background:var(--white);
+      transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .article:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
+    .article-cover {
+      min-height:220px;
+      background:
+        linear-gradient(135deg, rgba(122,31,43,.95), rgba(42,15,20,.95));
+      display:flex; align-items:flex-end;
+      padding:24px;
+      color:var(--ivory);
+      position:relative;
+      overflow:hidden;
+    }
+    .article-cover::before {
+      content:"§";
+      position:absolute; font-family:"Playfair Display"; font-size:15rem; right:-20px; top:-80px;
+      color:rgba(200,169,107,.12);
+    }
+    .article-cover span { position:relative; z-index:2; font-size:.68rem; color:var(--gold-light); letter-spacing:.12em; }
+    .article-cover .article-brand-mark {
+      right:26px;
+      left:auto;
+      bottom:20px;
+      width:165px;
+      max-width:52%;
+      opacity:.09;
+      z-index:1;
+    }
+    .article-cover-secondary { min-height:220px !important; }
+    .article-body { padding:23px; }
+    .article-body h3 { margin:0 0 8px; font-family:"Playfair Display",Georgia,serif; font-size:1.35rem; line-height:1.35; }
+    .article-body p { margin:0 0 16px; color: color-mix(in srgb,var(--charcoal) 62%,transparent); font-size:.79rem; }
+    .article-link { display:inline-flex; align-items:center; gap:7px; color:var(--burgundy); font-size:.76rem; font-weight:800; }
+    .article-link svg { transition:transform .25s ease; }
+    .article:hover .article-link svg { transform:translateX(-3px); }
+
+    /* Contact */
+    .contact-section {
+      background: var(--oxblood);
+      color: var(--ivory);
+      overflow:hidden;
+    }
+    .contact-section::before {
+      content:""; position:absolute; width:620px;height:620px;border-radius:50%;
+      border:1px solid rgba(200,169,107,.14); right:-270px; top:-220px;
+    }
+    .contact-grid {
+      position:relative; z-index:1;
+      display:grid; grid-template-columns: 1fr .9fr; gap:60px; align-items:center;
+    }
+    .contact-copy .eyebrow { color:var(--gold-light); }
+    .contact-copy h2 {
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(2.2rem,4.5vw,4rem);
+      line-height:1.15; margin:15px 0 14px;
+    }
+    .contact-copy p { color:rgba(246,240,230,.68); max-width:610px; }
+    .contact-cards { display:grid; gap:10px; margin-top:25px; }
+    .contact-card {
+      display:flex; align-items:center; gap:14px; width:max-content; max-width:100%;
+      padding:12px 14px; border:1px solid rgba(200,169,107,.19); border-radius:14px;
+      color:rgba(246,240,230,.78); background:rgba(255,255,255,.02);
+    }
+    .contact-card svg { color:var(--gold); flex:0 0 auto; }
+    .contact-card span { font-size:.78rem; overflow-wrap:anywhere; }
+    .contact-side {
+      padding:28px; border-radius:26px;
+      background:linear-gradient(160deg, rgba(246,240,230,.08), rgba(246,240,230,.03));
+      border:1px solid rgba(200,169,107,.2);
+      backdrop-filter:blur(12px);
+    }
+    .contact-side h3 { font-family:"Playfair Display",Georgia,serif; font-size:1.55rem; margin:0 0 7px; }
+    .contact-side p { margin:0; font-size:.8rem; color:rgba(246,240,230,.62); }
+    .contact-side .cta { margin-top:20px; background:var(--gold); color:var(--oxblood); box-shadow:none; }
+    .contact-side .cta:hover { background:var(--gold-light); }
+    .contact-note {
+      margin-top:17px; padding-top:17px; border-top:1px solid rgba(200,169,107,.15);
+      font-size:.68rem; color:rgba(246,240,230,.48);
+    }
+
+    /* Footer */
+    footer {
+      background: #1b0a0e;
+      color:rgba(246,240,230,.66);
+      padding:24px 0;
+    }
+    .footer-inner {
+      width:min(var(--max),calc(100% - 40px)); margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center; gap:15px;
+      font-size:.68rem;
+    }
+    .footer-brand { color:var(--gold-light); font-family:"Playfair Display",Georgia,serif; letter-spacing:.08em; }
+    .disclaimer { max-width:760px; text-align:center; }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(25px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.revealed { opacity:1; transform:none; }
+    .delay-1 { transition-delay:.08s; }
+    .delay-2 { transition-delay:.16s; }
+    .delay-3 { transition-delay:.24s; }
+
+    /* Back to top */
+    .top-btn {
+      position:fixed; left:22px; bottom:22px; z-index:80;
+      width:44px;height:44px;border-radius:50%;
+      border:1px solid var(--border); background:var(--white); color:var(--burgundy);
+      display:grid;place-items:center;
+      box-shadow:0 12px 32px rgba(42,15,20,.13);
+      opacity:0;visibility:hidden;transform:translateY(10px);
+      transition:all .3s var(--ease);
+    }
+    .top-btn.visible { opacity:1;visibility:visible;transform:none; }
+    .top-btn:hover { transform:translateY(-3px); border-color:var(--gold); }
+
+    /* Mobile */
+    @media (max-width: 1050px) {
+      nav.main-nav { display:none; }
+      .menu-btn { display:grid; }
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-card { min-height:440px; max-width:650px; width:100%; margin:0 auto; }
+      .about-profile-layout { grid-template-columns:1fr; }
+      .about-portrait { min-height:300px; }
+      .service-grid { grid-template-columns:repeat(2,1fr); }
+      .about-grid, .contact-grid { grid-template-columns:1fr; }
+      .articles-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width: 720px) {
+      :root { --header-h:74px; }
+      .section { padding:80px 0; }
+      .nav, .section, .hero-inner, .footer-inner { width:min(100% - 26px,var(--max)); }
+      .brand-text small { display:none; }
+      .cta.nav-cta { display:none; }
+      .nav-actions { margin-inline-start:auto; }
+      .service-grid { grid-template-columns:1fr; }
+      .principles { grid-template-columns:1fr; }
+      .articles-top { display:block; }
+      .articles-top .cta { margin-top:14px; }
+      .hero { min-height:auto; padding-bottom:70px; }
+      .hero-inner { padding-top:122px; }
+      .hero h1 { font-size:clamp(2.55rem,12vw,4rem); }
+      .hero-actions { display:grid; }
+      .hero-actions .cta { width:100%; }
+      .hero-card { min-height:440px; }
+      .profile-monogram { inset:0; }
+      .card-orbit { display:none; }
+      .hero-card-bottom { left:28px; right:28px; bottom:28px; }
+      .panel-brand-mark { width:150px; opacity:.08; }
+      .about-profile-copy { padding:4px 0; }
+      .loader-progress-wrap { bottom: 8vh; }
+      .contact-side { padding:23px; }
+      .footer-inner { flex-direction:column; text-align:center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+
+    /* Mobile drawer */
+    .drawer {
+      position:fixed; inset:0; z-index:99;
+      background:rgba(42,15,20,.54); backdrop-filter:blur(8px);
+      opacity:0; visibility:hidden; transition:all .3s ease;
+    }
+    .drawer.open { opacity:1; visibility:visible; }
+    .drawer-panel {
+      position:absolute; top:0; bottom:0; right:0;
+      width:min(360px,90vw); padding:95px 24px 25px;
+      background:var(--ivory); border-left:1px solid var(--border);
+      transform:translateX(110%); transition:transform .35s var(--ease);
+    }
+    html[dir="ltr"] .drawer-panel { left:0; right:auto; border-left:0; border-right:1px solid var(--border); transform:translateX(-110%); }
+    .drawer.open .drawer-panel { transform:none; }
+    .drawer nav { display:grid; gap:7px; }
+    .drawer .nav-link {
+      font-size:.96rem; padding:13px 11px; border-bottom:1px solid var(--border);
+    }
+    .drawer-close {
+      position:absolute; top:22px; right:22px;
+    }
+    html[dir="ltr"] .drawer-close { right:auto; left:22px; }
+
+    /* LTR refinements */
+    html[dir="ltr"] .nav-link::after { left:11px; right:11px; }
+    html[dir="ltr"] .contact-card { direction:ltr; }
+    html[dir="ltr"] .article-cover::before { left:-20px; right:auto; }
+    html[dir="ltr"] .top-btn { left:auto; right:22px; }
+    html[dir="ltr"] .service-index { left:auto; right:23px; }
+    html[dir="ltr"] .lang-menu { left:auto; right:0; }
+    html[dir="ltr"] .lang-option { text-align:left; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"رسول موسوی خادم",
+    "jobTitle":"وکیل پایه یک دادگستری",
+    "email":"RMK-Commercial-LAW@Gmail.com",
+    "telephone":"+989122350974",
+    "description":"وکیل پایه یک دادگستری با تمرکز بر حقوق تجارت بین‌الملل، حقوق رمز ارز، قاچاق کالا و ارز، قراردادهای بین‌المللی، داوری بین‌المللی و خدمات Compliance Officer."
+  }
+  </script>
+</head>
+
+<body class="no-scroll">
+  <div class="progress" id="progress"></div>
+
+  <!-- Brand intro: play the complete video, hold 1s, then fade to the homepage in 1s. -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <video class="loader-video" id="loaderVideo" autoplay muted playsinline preload="auto" >
+      <source src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/main/Final%20Comp.mp4" type="video/mp4" />
+    </video>
+    <div class="loader-shade" aria-hidden="true"></div>
+    <div class="loader-progress-wrap" aria-hidden="true">
+      <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="nav">
+      <a class="brand" href="#home" aria-label="RMK Commercial LAW">
+        <div class="brand-seal"><img src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/hyj2U06bWr0r9oNpXrx1_n36uow-3RNr80GSTgWj7EXLk7gGOA.png" alt="RMK" /></div>
+        <div class="brand-text">
+          <strong>RMK — Commercial LAW</strong>
+          <small data-i18n="brandTag">International Business Law</small>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a class="nav-link" href="#about" data-i18n="nav.about">درباره من</a>
+        <a class="nav-link" href="#practice" data-i18n="nav.practice">حوزه‌های تخصصی</a>
+        <a class="nav-link" href="#arbitration" data-i18n="nav.arbitration">داوری بین‌المللی</a>
+        <a class="nav-link" href="#articles" data-i18n="nav.articles">مقالات</a>
+        <a class="nav-link" href="#contact" data-i18n="nav.contact">تماس</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-wrap" id="langWrap">
+          <button class="lang-btn" id="langToggle" aria-label="Change language" aria-expanded="false">
+            <img class="lang-current-flag" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/5QibQYiPMRAJx9O_6SqCmaf_5yQ-QBnv2sB2SMOTHIuixbVAdg.png" alt="" />
+            <span class="lang-current-code">IR</span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button class="lang-option" data-lang="fa" role="menuitem">
+              <img class="flag flag-img" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/5QibQYiPMRAJx9O_6SqCmaf_5yQ-QBnv2sB2SMOTHIuixbVAdg.png" alt="" />
+              <span class="lang-code">IR</span>
+              <span class="lang-name">فارسی</span>
+            </button>
+            <button class="lang-option" data-lang="ar" role="menuitem">
+              <img class="flag flag-img" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/m1MWBuJ7JZaxE-L0p4NBhPJxjyo-3NeaCdTxRxuWSJp0JBM50g.png" alt="" />
+              <span class="lang-code">AR</span>
+              <span class="lang-name">العربية</span>
+            </button>
+            <button class="lang-option" data-lang="en" role="menuitem">
+              <img class="flag flag-img" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/NJMP_N8YLJaWDpXVC79q10VPhuI-PPeZUMaFS3eUqZmoxVxUjw.png" alt="" />
+              <span class="lang-code">Eng</span>
+              <span class="lang-name">English</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle day/night mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <circle cx="12" cy="12" r="3.2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+          </svg>
+        </button>
+
+        <a class="cta nav-cta" href="#contact" data-i18n="nav.cta">درخواست مشاوره</a>
+        <button class="menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <button class="icon-btn drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+      <nav>
+        <a class="nav-link" href="#about" data-i18n="nav.about">درباره من</a>
+        <a class="nav-link" href="#practice" data-i18n="nav.practice">حوزه‌های تخصصی</a>
+        <a class="nav-link" href="#arbitration" data-i18n="nav.arbitration">داوری بین‌المللی</a>
+        <a class="nav-link" href="#articles" data-i18n="nav.articles">مقالات</a>
+        <a class="nav-link" href="#contact" data-i18n="nav.contact">تماس</a>
+      </nav>
+      <a class="cta" style="margin-top:18px;width:100%" href="#contact" data-i18n="nav.cta">درخواست مشاوره</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <div class="hero-badge"><span>✦</span> <span data-i18n="hero.badge">وکیل پایه یک دادگستری • حقوق تجارت بین‌الملل</span></div>
+          <h1 data-i18n-html="hero.title">حقوق <span class="accent">تجارت</span>، قرارداد و تطبیق؛ با نگاه فرامرزی</h1>
+          <p class="hero-lead" data-i18n="hero.lead">
+            دفتر حقوقی RMK با تمرکز بر مسائل حقوقی تجارت بین‌الملل، حقوق رمز ارز، قاچاق کالا و ارز، قراردادهای بین‌المللی، داوری و خدمات تطبیق در کنار شرکت‌ها و فعالان اقتصادی قرار می‌گیرد.
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="#contact" data-i18n="hero.cta1">درخواست مشاوره</a>
+            <a class="cta secondary" href="#practice" data-i18n="hero.cta2">مشاهده حوزه‌های تخصصی</a>
+          </div>
+          <div class="hero-note">
+            <span><i></i><span data-i18n="hero.note1">فوق‌لیسانس حقوق تجارت بین‌الملل</span></span>
+            <span><i></i><span data-i18n="hero.note2">چندین سال سابقه وکالت</span></span>
+            <span><i></i><span data-i18n="hero.note3">رویکرد ریسک‌محور و فرامرزی</span></span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal delay-2">
+          <div class="card-orbit"></div>
+          <div class="profile-monogram profile-photo">
+            <img src="https://github.com/Sar-resid-Magezin-org/home-page/blob/main/d1962a3d-686a-4d30-9857-5ceb885ec1ce.png?raw=true" alt="رسول موسوی خادم" />
+            <div class="profile-photo-shade"></div>
+          </div>
+          <div class="hero-card-bottom">
+            <strong data-i18n="card.name">رسول موسوی خادم</strong>
+            <small data-i18n="card.role">Attorney at Law • Commercial & International Practice</small>
+            <div class="card-pill-row">
+              <span class="card-pill" data-i18n="pill.crypto">حقوق رمز ارز</span>
+              <span class="card-pill" data-i18n="pill.trade">تجارت بین‌الملل</span>
+              <span class="card-pill" data-i18n="pill.arb">داوری</span>
+              <span class="card-pill" data-i18n="pill.comp">Compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ribbon" aria-label="Practice focus">
+      <div class="ribbon-track">
+        <span class="ribbon-item"><b>RMK</b> Commercial LAW <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.crypto">حقوق رمز ارز <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.smuggle">قاچاق کالا و ارز <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.contracts">قراردادهای بین‌المللی <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.arb">داوری بین‌المللی <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.comp">Compliance Officer <span class="dot"></span></span>
+        <span class="ribbon-item"><b>RMK</b> Commercial LAW <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.crypto">حقوق رمز ارز <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.smuggle">قاچاق کالا و ارز <span class="dot"></span></span>
+        <span class="ribbon-item" data-i18n="ribbon.contracts">قراردادهای بین‌المللی <span class="dot"></span></span>
+      </div>
+    </div>
+
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div class="about-panel reveal">
+          <div class="about-profile-layout">
+            <div class="about-portrait profile-photo">
+              <img src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/44a484ea-aeda-4dde-950f-f560ae2098a3.png" alt="رسول موسوی خادم" />
+              <div class="profile-photo-shade"></div>
+              <div class="about-portrait-tag" data-i18n="about.tag">RMK • LEGAL PRACTICE</div>
+            </div>
+            <div class="about-profile-copy">
+              <div class="about-profile-kicker" data-i18n="about.profileKicker">رزومه حرفه‌ای</div>
+              <h3 data-i18n="about.name">رسول موسوی خادم</h3>
+              <p class="about-role" data-i18n="about.role">وکیل پایه یک دادگستری • متخصص حقوق تجارت بین‌الملل</p>
+              <div class="credentials">
+                <div class="credential">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V6.5a2.5 2.5 0 0 1 5 0V19M9 19V6.5a2.5 2.5 0 0 1 5 0V19M14 19V6.5a2.5 2.5 0 0 1 5 0V19"/><path d="M3 19h18"/></svg>
+                  <div><strong data-i18n="cred.degree">فوق‌لیسانس حقوق تجارت بین‌الملل</strong><span data-i18n="cred.degree2">تمرکز دانشگاهی بر حقوق کسب‌وکار فرامرزی</span></div>
+                </div>
+                <div class="credential">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 4.8-3.3 7.9-8 9-4.7-1.1-8-4.2-8-9V7l8-4Z"/><path d="M8.8 12.1l2.1 2.1 4.4-4.5"/></svg>
+                  <div><strong data-i18n="cred.attorney">وکیل پایه یک دادگستری</strong><span data-i18n="cred.attorney2">تمرکز حرفه‌ای بر مسائل تجاری و فرامرزی</span></div>
+                </div>
+                <div class="credential">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  <div><strong data-i18n="cred.experience">چندین سال سابقه وکالت</strong><span data-i18n="cred.experience2">با تمرکز بر پرونده‌ها و مسائل تخصصی حقوق تجارت</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-copy reveal delay-1">
+          <span class="eyebrow" data-i18n="about.eyebrow">درباره</span>
+          <h3 data-i18n="about.title">حقوق در نقطه‌ای که تجارت، قرارداد، ریسک و مرزها به هم می‌رسند.</h3>
+          <p data-i18n="about.p1">
+            RMK — Commercial LAW برای ارائه تصویری تخصصی و حرفه‌ای از خدمات حقوقی رسول موسوی خادم طراحی شده است؛ با تمرکز بر مسائل حقوقی کسب‌وکارهایی که در محیط‌های پیچیده، چندجانبه و فرامرزی فعالیت می‌کنند.
+          </p>
+          <p data-i18n="about.p2">
+            رویکرد این مجموعه، صرفاً تنظیم متن حقوقی نیست؛ بلکه شناسایی ریسک، تحلیل ساختار معامله، طراحی تعهدات قراردادی، توجه به سازوکارهای حل اختلاف و انطباق حقوقی نیز در فرایند مشاوره مورد توجه قرار می‌گیرد.
+          </p>
+          <div class="principles">
+            <div class="principle"><strong data-i18n="principle1.t">تحلیل</strong><span data-i18n="principle1.d">تفکیک دقیق مسئله و ریسک‌های حقوقی</span></div>
+            <div class="principle"><strong data-i18n="principle2.t">ساختار</strong><span data-i18n="principle2.d">طراحی قرارداد و راهکار متناسب با معامله</span></div>
+            <div class="principle"><strong data-i18n="principle3.t">تطبیق</strong><span data-i18n="principle3.d">توجه هم‌زمان به الزامات تجاری و حقوقی</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="practice">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="practice.eyebrow">حوزه‌های تخصصی</span>
+        <h2 data-i18n="practice.title">تمرکز بر مسائل حقوقی با ماهیت تجاری، بین‌المللی و تخصصی.</h2>
+        <p data-i18n="practice.lead">ساختار خدمات سایت بر اساس حوزه‌های تخصصی طراحی شده تا در آینده بتوان برای هر بخش صفحه مستقل، مقالات مرتبط و محتوای عمیق‌تر ایجاد کرد.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service reveal">
+          <span class="service-index">01</span>
+          <div class="service-icon">₿</div>
+          <h3 data-i18n="service.crypto.t">حقوق رمز ارز</h3>
+          <p data-i18n="service.crypto.d">تحلیل قراردادها و روابط حقوقی مرتبط با دارایی‌های دیجیتال، ریسک‌های معاملاتی و مسائل حقوق تجارت نوین.</p>
+        </article>
+
+        <article class="service reveal delay-1">
+          <span class="service-index">02</span>
+          <div class="service-icon">§</div>
+          <h3 data-i18n="service.smuggle.t">قاچاق کالا و ارز</h3>
+          <p data-i18n="service.smuggle.d">مطالعه و تحلیل مقررات مرتبط با قاچاق کالا و ارز و ارائه راهکار حقوقی در ابعاد کیفری، تعزیراتی و تجاری.</p>
+        </article>
+
+        <article class="service reveal delay-2">
+          <span class="service-index">03</span>
+          <div class="service-icon">↔</div>
+          <h3 data-i18n="service.contract.t">قراردادهای بین‌المللی</h3>
+          <p data-i18n="service.contract.d">مشاوره، بررسی و تنظیم قراردادهای تجاری بین‌المللی با توجه به تعهدات، ریسک‌ها، قانون حاکم و حل اختلاف.</p>
+        </article>
+
+        <article class="service reveal">
+          <span class="service-index">04</span>
+          <div class="service-icon">⚖</div>
+          <h3 data-i18n="service.arb.t">داوری بین‌المللی</h3>
+          <p data-i18n="service.arb.d">مشاوره و وکالت در موضوعات مرتبط با داوری بین‌المللی، از طراحی بند داوری تا راهبرد حقوقی اختلاف.</p>
+        </article>
+
+        <article class="service reveal delay-1">
+          <span class="service-index">05</span>
+          <div class="service-icon">✓</div>
+          <h3 data-i18n="service.comp.t">Compliance Officer</h3>
+          <p data-i18n="service.comp.d">ارائه خدمات نمایندگی و تطبیق برای شرکت‌ها در فرایند بررسی الزامات، کنترل ریسک و انعقاد قراردادهای تجاری.</p>
+        </article>
+
+        <article class="service reveal delay-2">
+          <span class="service-index">06</span>
+          <div class="service-icon">⌘</div>
+          <h3 data-i18n="service.business.t">مشاوره حقوق تجارت</h3>
+          <p data-i18n="service.business.d">تحلیل ساختارهای تجاری، تعهدات قراردادی و ریسک‌های حقوقی برای تصمیم‌گیری دقیق‌تر در معاملات.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="arbitration">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="arb.eyebrow">رویکرد فرامرزی</span>
+        <h2 data-i18n="arb.title">از پیشگیری از اختلاف تا طراحی مسیر حل اختلاف.</h2>
+        <p data-i18n="arb.lead">یک صفحه حرفه‌ای حقوقی بهتر است فقط «خدمات» را فهرست نکند؛ بلکه روش حل مسئله را نیز به بازدیدکننده نشان دهد.</p>
+      </div>
+
+      <div class="split">
+        <div class="feature-dark reveal">
+          <img class="panel-brand-mark" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/J4MZJnw6R02OEFAh1VJeSEe2Ygw-Fc2FHP1cQtO3yTxKmb9MXQ.png" alt="" aria-hidden="true" />
+          <h3 data-i18n="feature.dark.t">داوری و حل اختلاف</h3>
+          <p data-i18n="feature.dark.p">تمرکز بر انتخاب سازوکار حل اختلاف، طراحی بندهای قراردادی و تدوین راهبرد حقوقی متناسب با ساختار معامله.</p>
+          <div class="feature-list">
+            <div class="feature-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M5 7h14M7 7l-4 8h8L7 7ZM17 7l-4 8h8l-4-8Z"/></svg><span data-i18n="feature.dark.i1">طراحی و بررسی شرط داوری</span></div>
+            <div class="feature-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2"/></svg><span data-i18n="feature.dark.i2">تحلیل ریسک زمانی و قراردادی</span></div>
+            <div class="feature-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h10M4 18h16"/></svg><span data-i18n="feature.dark.i3">ساختاردهی استراتژی حقوقی</span></div>
+          </div>
+        </div>
+
+        <div class="feature-light reveal delay-1">
+          <h3 data-i18n="feature.light.t">Compliance & Contract</h3>
+          <p data-i18n="feature.light.p">برای شرکت‌هایی که قرارداد را فقط «سند» نمی‌بینند و آن را بخشی از مدیریت ریسک تجاری خود می‌دانند.</p>
+          <div class="risk-map">
+            <div class="risk-step"><b>01</b><span data-i18n="risk.1">شناخت معامله و طرفین قرارداد</span></div>
+            <div class="risk-step"><b>02</b><span data-i18n="risk.2">شناسایی ریسک‌های حقوقی و تطبیقی</span></div>
+            <div class="risk-step"><b>03</b><span data-i18n="risk.3">طراحی تعهدات، ضمانت اجرا و خروج</span></div>
+            <div class="risk-step"><b>04</b><span data-i18n="risk.4">تدوین مسیر حل اختلاف و پیگیری حقوقی</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="articles">
+      <div class="articles-top reveal">
+        <div class="section-head" style="margin-bottom:0">
+          <span class="eyebrow" data-i18n="articles.eyebrow">مقالات</span>
+          <h2 data-i18n="articles.title">دانش حقوقی، پیش از تصمیم حقوقی.</h2>
+          <p data-i18n="articles.lead">این بخش به‌عنوان پایه معماری محتوایی سایت طراحی شده و در ادامه می‌تواند به صفحات مستقل برای مقالات تخصصی تبدیل شود.</p>
+        </div>
+        <a class="cta secondary" href="#contact" data-i18n="articles.cta">دریافت مشاوره درباره یک موضوع</a>
+      </div>
+
+      <div class="articles-grid">
+        <article class="article reveal">
+          <div class="article-cover">
+            <img class="panel-brand-mark article-brand-mark" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/J4MZJnw6R02OEFAh1VJeSEe2Ygw-Fc2FHP1cQtO3yTxKmb9MXQ.png" alt="" aria-hidden="true" />
+            <span data-i18n="article.label">عناوین مقاله</span>
+          </div>
+          <div class="article-body">
+            <h3 data-i18n="article.title">از قرارداد بین‌المللی تا اختلاف: کدام بندها از ابتدا باید جدی گرفته شوند؟</h3>
+            <p data-i18n="article.desc">نمونه‌ای از ساختار محتوایی آینده سایت: تحلیل حقوقی، مثال عملی و اشاره به مقررات مرتبط بدون تبدیل صفحه به ویترین تبلیغاتی.</p>
+            <a class="article-link" href="#contact"><span data-i18n="article.read">ادامه مسیر مطالعه</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+
+        <article class="article reveal delay-1">
+          <div class="article-cover article-cover-secondary"><img class="panel-brand-mark article-brand-mark" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/J4MZJnw6R02OEFAh1VJeSEe2Ygw-Fc2FHP1cQtO3yTxKmb9MXQ.png" alt="" aria-hidden="true" /><span data-i18n="article2.label">معماری محتوایی</span></div>
+          <div class="article-body">
+            <h3 data-i18n="article2.title">حقوق رمز ارز و قراردادهای نوین تجاری</h3>
+            <p data-i18n="article2.desc">مقالاتی که در نسخه‌های بعدی سایت می‌توان بر اساس موضوع، حوزه تخصصی و کلیدواژه دسته‌بندی کرد.</p>
+            <a class="article-link" href="#contact"><span data-i18n="article.read">ادامه مسیر مطالعه</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section">
+        <div class="contact-grid">
+          <div class="contact-copy reveal">
+            <span class="eyebrow" data-i18n="contact.eyebrow">ارتباط مستقیم</span>
+            <h2 data-i18n="contact.title">برای بررسی یک مسئله حقوقی، نقطه شروع را دقیق انتخاب کنید.</h2>
+            <p data-i18n="contact.lead">برای مشاوره در حوزه‌های تخصصی سایت، می‌توانید از مسیرهای ارتباطی رسمی زیر استفاده کنید.</p>
+            <div class="contact-cards">
+              <a class="contact-card" href="tel:+989122350974">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.7 19.7 0 0 1 2.1 3.9 2 2 0 0 1 4.1 1.7h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2.3Z"/></svg>
+                <span>09122350974</span>
+              </a>
+              <a class="contact-card" href="mailto:RMK-Commercial-LAW@Gmail.com">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+                <span>RMK-Commercial-LAW@Gmail.com</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="contact-side reveal delay-1">
+            <h3 data-i18n="contact.card.t">RMK — Commercial LAW</h3>
+            <p data-i18n="contact.card.p">حقوق تجارت بین‌الملل • قرارداد • داوری • تطبیق</p>
+            <a class="cta" href="tel:+989122350974" data-i18n="contact.card.cta">تماس برای مشاوره</a>
+            <div class="contact-note" data-i18n="contact.note">
+              اطلاعات این وب‌سایت جنبه معرفی خدمات و محتوای عمومی دارد و جایگزین بررسی اختصاصی هر پرونده، قرارداد یا وضعیت حقوقی نیست.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">RMK — Commercial LAW</div>
+      <div class="disclaimer" data-i18n="footer.disclaimer">© RMK Commercial LAW — کلیه حقوق محتوایی این وب‌سایت محفوظ است.</div>
+      <div>2026</div>
+    </div>
+  </footer>
+
+  <button class="top-btn" id="topBtn" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <script>
+    const I18N = {
+      fa: {
+        brandTag: "International Business Law",
+        "nav.about":"درباره من","nav.practice":"حوزه‌های تخصصی","nav.arbitration":"داوری بین‌المللی","nav.articles":"مقالات","nav.contact":"تماس","nav.cta":"درخواست مشاوره",
+        "hero.badge":"وکیل پایه یک دادگستری • حقوق تجارت بین‌الملل",
+        "hero.title":"حقوق <span class=\"accent\">تجارت</span>، قرارداد و تطبیق؛ با نگاه فرامرزی",
+        "hero.lead":"دفتر حقوقی RMK با تمرکز بر مسائل حقوقی تجارت بین‌الملل، حقوق رمز ارز، قاچاق کالا و ارز، قراردادهای بین‌المللی، داوری و خدمات تطبیق در کنار شرکت‌ها و فعالان اقتصادی قرار می‌گیرد.",
+        "hero.cta1":"درخواست مشاوره","hero.cta2":"مشاهده حوزه‌های تخصصی","hero.note1":"فوق‌لیسانس حقوق تجارت بین‌الملل","hero.note2":"چندین سال سابقه وکالت","hero.note3":"رویکرد ریسک‌محور و فرامرزی",
+        "card.name":"رسول موسوی خادم","card.role":"وکیل دادگستری • حقوق تجاری و بین‌المللی","pill.crypto":"حقوق رمز ارز","pill.trade":"تجارت بین‌الملل","pill.arb":"داوری","pill.comp":"Compliance",
+        "ribbon.crypto":"حقوق رمز ارز","ribbon.smuggle":"قاچاق کالا و ارز","ribbon.contracts":"قراردادهای بین‌المللی","ribbon.arb":"داوری بین‌المللی","ribbon.comp":"Compliance Officer",
+        "about.eyebrow":"درباره","about.profileKicker":"رزومه حرفه‌ای","about.tag":"RMK • LEGAL PRACTICE","about.name":"رسول موسوی خادم","about.role":"وکیل پایه یک دادگستری • متخصص حقوق تجارت بین‌الملل",
+        "cred.degree":"فوق‌لیسانس حقوق تجارت بین‌الملل","cred.degree2":"تمرکز دانشگاهی بر حقوق کسب‌وکار فرامرزی","cred.attorney":"وکیل پایه یک دادگستری","cred.attorney2":"تمرکز حرفه‌ای بر مسائل تجاری و فرامرزی","cred.experience":"چندین سال سابقه وکالت","cred.experience2":"با تمرکز بر پرونده‌ها و مسائل تخصصی حقوق تجارت",
+        "about.title":"حقوق در نقطه‌ای که تجارت، قرارداد، ریسک و مرزها به هم می‌رسند.","about.p1":"RMK — Commercial LAW برای ارائه تصویری تخصصی و حرفه‌ای از خدمات حقوقی رسول موسوی خادم طراحی شده است؛ با تمرکز بر مسائل حقوقی کسب‌وکارهایی که در محیط‌های پیچیده، چندجانبه و فرامرزی فعالیت می‌کنند.","about.p2":"رویکرد این مجموعه، صرفاً تنظیم متن حقوقی نیست؛ بلکه شناسایی ریسک، تحلیل ساختار معامله، طراحی تعهدات قراردادی، توجه به سازوکارهای حل اختلاف و انطباق حقوقی نیز در فرایند مشاوره مورد توجه قرار می‌گیرد.",
+        "principle1.t":"تحلیل","principle1.d":"تفکیک دقیق مسئله و ریسک‌های حقوقی","principle2.t":"ساختار","principle2.d":"طراحی قرارداد و راهکار متناسب با معامله","principle3.t":"تطبیق","principle3.d":"توجه هم‌زمان به الزامات تجاری و حقوقی",
+        "practice.eyebrow":"حوزه‌های تخصصی","practice.title":"تمرکز بر مسائل حقوقی با ماهیت تجاری، بین‌المللی و تخصصی.","practice.lead":"ساختار خدمات سایت بر اساس حوزه‌های تخصصی طراحی شده تا در آینده بتوان برای هر بخش صفحه مستقل، مقالات مرتبط و محتوای عمیق‌تر ایجاد کرد.",
+        "service.crypto.t":"حقوق رمز ارز","service.crypto.d":"تحلیل قراردادها و روابط حقوقی مرتبط با دارایی‌های دیجیتال، ریسک‌های معاملاتی و مسائل حقوق تجارت نوین.",
+        "service.smuggle.t":"قاچاق کالا و ارز","service.smuggle.d":"مطالعه و تحلیل مقررات مرتبط با قاچاق کالا و ارز و ارائه راهکار حقوقی در ابعاد کیفری، تعزیراتی و تجاری.",
+        "service.contract.t":"قراردادهای بین‌المللی","service.contract.d":"مشاوره، بررسی و تنظیم قراردادهای تجاری بین‌المللی با توجه به تعهدات، ریسک‌ها، قانون حاکم و حل اختلاف.",
+        "service.arb.t":"داوری بین‌المللی","service.arb.d":"مشاوره و وکالت در موضوعات مرتبط با داوری بین‌المللی، از طراحی بند داوری تا راهبرد حقوقی اختلاف.",
+        "service.comp.t":"Compliance Officer","service.comp.d":"ارائه خدمات نمایندگی و تطبیق برای شرکت‌ها در فرایند بررسی الزامات، کنترل ریسک و انعقاد قراردادهای تجاری.",
+        "service.business.t":"مشاوره حقوق تجارت","service.business.d":"تحلیل ساختارهای تجاری، تعهدات قراردادی و ریسک‌های حقوقی برای تصمیم‌گیری دقیق‌تر در معاملات.",
+        "arb.eyebrow":"رویکرد فرامرزی","arb.title":"از پیشگیری از اختلاف تا طراحی مسیر حل اختلاف.","arb.lead":"یک صفحه حرفه‌ای حقوقی بهتر است فقط «خدمات» را فهرست نکند؛ بلکه روش حل مسئله را نیز به بازدیدکننده نشان دهد.",
+        "feature.dark.t":"داوری و حل اختلاف","feature.dark.p":"تمرکز بر انتخاب سازوکار حل اختلاف، طراحی بندهای قراردادی و تدوین راهبرد حقوقی متناسب با ساختار معامله.","feature.dark.i1":"طراحی و بررسی شرط داوری","feature.dark.i2":"تحلیل ریسک زمانی و قراردادی","feature.dark.i3":"ساختاردهی استراتژی حقوقی",
+        "feature.light.t":"Compliance & Contract","feature.light.p":"برای شرکت‌هایی که قرارداد را فقط «سند» نمی‌بینند و آن را بخشی از مدیریت ریسک تجاری خود می‌دانند.","risk.1":"شناخت معامله و طرفین قرارداد","risk.2":"شناسایی ریسک‌های حقوقی و تطبیقی","risk.3":"طراحی تعهدات، ضمانت اجرا و خروج","risk.4":"تدوین مسیر حل اختلاف و پیگیری حقوقی",
+        "articles.eyebrow":"مقالات","articles.title":"دانش حقوقی، پیش از تصمیم حقوقی.","articles.lead":"این بخش به‌عنوان پایه معماری محتوایی سایت طراحی شده و در ادامه می‌تواند به صفحات مستقل برای مقالات تخصصی تبدیل شود.","articles.cta":"دریافت مشاوره درباره یک موضوع",
+        "article.label":"عناوین مقاله","article.title":"از قرارداد بین‌المللی تا اختلاف: کدام بندها از ابتدا باید جدی گرفته شوند؟","article.desc":"نمونه‌ای از ساختار محتوایی آینده سایت: تحلیل حقوقی، مثال عملی و اشاره به مقررات مرتبط بدون تبدیل صفحه به ویترین تبلیغاتی.","article.read":"ادامه مسیر مطالعه","article2.label":"معماری محتوایی","article2.title":"حقوق رمز ارز و قراردادهای نوین تجاری","article2.desc":"مقالاتی که در نسخه‌های بعدی سایت می‌توان بر اساس موضوع، حوزه تخصصی و کلیدواژه دسته‌بندی کرد.",
+        "contact.eyebrow":"ارتباط مستقیم","contact.title":"برای بررسی یک مسئله حقوقی، نقطه شروع را دقیق انتخاب کنید.","contact.lead":"برای مشاوره در حوزه‌های تخصصی سایت، می‌توانید از مسیرهای ارتباطی رسمی زیر استفاده کنید.","contact.card.t":"RMK — Commercial LAW","contact.card.p":"حقوق تجارت بین‌الملل • قرارداد • داوری • تطبیق","contact.card.cta":"تماس برای مشاوره","contact.note":"اطلاعات این وب‌سایت جنبه معرفی خدمات و محتوای عمومی دارد و جایگزین بررسی اختصاصی هر پرونده، قرارداد یا وضعیت حقوقی نیست.","footer.disclaimer":"© RMK Commercial LAW — کلیه حقوق محتوایی این وب‌سایت محفوظ است."
+      },
+      ar: {
+        brandTag: "القانون التجاري الدولي",
+        "nav.about":"نبذة","nav.practice":"مجالات الاختصاص","nav.arbitration":"التحكيم الدولي","nav.articles":"المقالات","nav.contact":"اتصل","nav.cta":"طلب استشارة",
+        "hero.badge":"محامٍ مقبول للترافع • القانون التجاري الدولي",
+        "hero.title":"القانون <span class=\"accent\">التجاري</span> والعقود والامتثال؛ بمنظور عابر للحدود",
+        "hero.lead":"يركّز RMK على المسائل القانونية في التجارة الدولية، وأصول التشفير، وتهريب السلع والعملات، والعقود الدولية، والتحكيم، وخدمات الامتثال للشركات والأنشطة التجارية.",
+        "hero.cta1":"طلب استشارة","hero.cta2":"استكشاف مجالات الاختصاص","hero.note1":"ماجستير في القانون التجاري الدولي","hero.note2":"عدة سنوات من الخبرة في المحاماة","hero.note3":"منهج قائم على إدارة المخاطر وعابر للحدود",
+        "card.name":"رسول موسوي خادم","card.role":"محامٍ • الممارسة التجارية والدولية","pill.crypto":"قانون الأصول المشفّرة","pill.trade":"التجارة الدولية","pill.arb":"التحكيم","pill.comp":"الامتثال",
+        "ribbon.crypto":"قانون الأصول المشفّرة","ribbon.smuggle":"تهريب السلع والعملات","ribbon.contracts":"العقود الدولية","ribbon.arb":"التحكيم الدولي","ribbon.comp":"مسؤول امتثال",
+        "about.eyebrow":"نبذة","about.profileKicker":"الملف المهني","about.tag":"RMK • LEGAL PRACTICE","about.name":"رسول موسوي خادم","about.role":"محامٍ • متخصص في القانون التجاري الدولي",
+        "cred.degree":"ماجستير في القانون التجاري الدولي","cred.degree2":"تركيز أكاديمي على الأعمال العابرة للحدود","cred.attorney":"محامٍ مقبول للترافع","cred.attorney2":"تركيز مهني على المسائل التجارية والدولية","cred.experience":"عدة سنوات من الخبرة في المحاماة","cred.experience2":"مع تركيز على مسائل وقضايا القانون التجاري المتخصصة",
+        "about.title":"القانون عند نقطة التقاء التجارة والعقد والمخاطر والحدود.","about.p1":"صُمّم RMK — Commercial LAW لتقديم صورة مهنية ومتخصصة عن الخدمات القانونية التي يقدمها رسول موسوي خادم، مع التركيز على الأعمال التي تعمل ضمن بيئات معقدة ومتعددة الأطراف وعابرة للحدود.","about.p2":"لا يقتصر النهج على صياغة النص القانوني؛ بل يشمل تحديد المخاطر، وتحليل هيكل المعاملة، وتصميم الالتزامات التعاقدية، وآليات تسوية المنازعات، ومتطلبات الامتثال.",
+        "principle1.t":"التحليل","principle1.d":"تفكيك المسألة وتحديد المخاطر القانونية","principle2.t":"الهيكلة","principle2.d":"تصميم العقد والحل بما يلائم المعاملة","principle3.t":"الامتثال","principle3.d":"مراعاة المتطلبات التجارية والقانونية معاً",
+        "practice.eyebrow":"مجالات الاختصاص","practice.title":"تركيز على المسائل القانونية ذات الطبيعة التجارية والدولية والمتخصصة.","practice.lead":"بُني هذا الهيكل ليتوسع مستقبلاً إلى صفحات مستقلة ومقالات متخصصة لكل مجال.",
+        "service.crypto.t":"قانون الأصول المشفّرة","service.crypto.d":"تحليل العقود والعلاقات القانونية المرتبطة بالأصول الرقمية والمخاطر التجارية ومسائل القانون التجاري الحديث.",
+        "service.smuggle.t":"تهريب السلع والعملات","service.smuggle.d":"دراسة وتحليل الأنظمة ذات الصلة بتهريب السلع والعملات وتقديم حلول قانونية في الأبعاد الجزائية والتنظيمية والتجارية.",
+        "service.contract.t":"العقود الدولية","service.contract.d":"استشارات ومراجعة وصياغة العقود التجارية الدولية مع مراعاة الالتزامات والمخاطر والقانون الواجب التطبيق وتسوية المنازعات.",
+        "service.arb.t":"التحكيم الدولي","service.arb.d":"استشارات وتمثيل في مسائل التحكيم الدولي من صياغة شرط التحكيم إلى استراتيجية النزاع.",
+        "service.comp.t":"Compliance Officer","service.comp.d":"خدمات تمثيل وامتثال للشركات في فحص المتطلبات وإدارة المخاطر وإبرام العقود التجارية.",
+        "service.business.t":"استشارات القانون التجاري","service.business.d":"تحليل الهياكل التجارية والالتزامات التعاقدية والمخاطر القانونية لدعم القرارات في المعاملات.",
+        "arb.eyebrow":"منظور عابر للحدود","arb.title":"من الوقاية من النزاع إلى تصميم مسار تسويته.","arb.lead":"الموقع القانوني المتخصص لا يكتفي بعرض الخدمات؛ بل يوضح أيضاً منهجية معالجة المسألة.",
+        "feature.dark.t":"التحكيم وتسوية المنازعات","feature.dark.p":"التركيز على اختيار آلية التسوية، وتصميم بنود العقود، وصياغة استراتيجية قانونية تناسب هيكل المعاملة.","feature.dark.i1":"تصميم ومراجعة شرط التحكيم","feature.dark.i2":"تحليل المخاطر الزمنية والتعاقدية","feature.dark.i3":"هيكلة الاستراتيجية القانونية",
+        "feature.light.t":"Compliance & Contract","feature.light.p":"للشركات التي تنظر إلى العقد كأداة لإدارة المخاطر التجارية، وليس كمجرد وثيقة.","risk.1":"فهم المعاملة وأطرافها","risk.2":"تحديد المخاطر القانونية ومخاطر الامتثال","risk.3":"تصميم الالتزامات والجزاءات وآليات الخروج","risk.4":"تحديد مسار تسوية المنازعات والمتابعة القانونية",
+        "articles.eyebrow":"المقالات","articles.title":"المعرفة القانونية قبل القرار القانوني.","articles.lead":"هذه المنطقة هي الأساس لبنية المحتوى ويمكن تطويرها لاحقاً إلى صفحات مستقلة للمقالات المتخصصة.","articles.cta":"استشارة حول موضوع محدد",
+        "article.label":"عناوين المقالات","article.title":"من العقد الدولي إلى النزاع: ما البنود التي ينبغي أخذها بجدية منذ البداية؟","article.desc":"نموذج لأسلوب المحتوى المستقبلي: تحليل قانوني، مثال عملي، وإحالة إلى الأنظمة ذات الصلة دون تحويل الصفحة إلى عرض دعائي.","article.read":"متابعة القراءة","article2.label":"بنية المحتوى","article2.title":"قانون الأصول المشفّرة والعقود التجارية الحديثة","article2.desc":"مقالات مستقبلية قابلة للتصنيف بحسب الموضوع ومجال الاختصاص والكلمات المفتاحية.",
+        "contact.eyebrow":"اتصال مباشر","contact.title":"لبحث مسألة قانونية، اختر نقطة البداية بدقة.","contact.lead":"للاستشارات في مجالات الموقع، يمكن استخدام قنوات الاتصال الرسمية أدناه.","contact.card.t":"RMK — Commercial LAW","contact.card.p":"التجارة الدولية • العقود • التحكيم • الامتثال","contact.card.cta":"اتصل للاستشارة","contact.note":"محتوى الموقع تعريفي وعام ولا يغني عن دراسة كل ملف أو عقد أو وضع قانوني على حدة.","footer.disclaimer":"© RMK Commercial LAW — جميع الحقوق المتعلقة بالمحتوى محفوظة."
+      },
+      en: {
+        brandTag: "International Business Law",
+        "nav.about":"About","nav.practice":"Practice Areas","nav.arbitration":"International Arbitration","nav.articles":"Articles","nav.contact":"Contact","nav.cta":"Request a Consultation",
+        "hero.badge":"Attorney at Law • International Business Law",
+        "hero.title":"Commercial <span class=\"accent\">Law</span>, Contracts & Compliance — Across Borders",
+        "hero.lead":"RMK focuses on legal matters involving international business, crypto-asset law, goods and currency smuggling, international contracts, arbitration, and compliance services for companies and commercial actors.",
+        "hero.cta1":"Request a Consultation","hero.cta2":"Explore Practice Areas","hero.note1":"M.A. in International Business Law","hero.note2":"Several years of legal practice","hero.note3":"Risk-aware, cross-border approach",
+        "card.name":"Rasoul Mousavi Khadem","card.role":"Attorney at Law • Commercial & International Practice","pill.crypto":"Crypto-Asset Law","pill.trade":"International Trade","pill.arb":"Arbitration","pill.comp":"Compliance",
+        "ribbon.crypto":"Crypto-Asset Law","ribbon.smuggle":"Goods & Currency Smuggling","ribbon.contracts":"International Contracts","ribbon.arb":"International Arbitration","ribbon.comp":"Compliance Officer",
+        "about.eyebrow":"About","about.profileKicker":"Professional Profile","about.tag":"RMK • LEGAL PRACTICE","about.name":"Rasoul Mousavi Khadem","about.role":"Attorney at Law • International Business Law",
+        "cred.degree":"M.A. in International Business Law","cred.degree2":"Academic focus on cross-border business law","cred.attorney":"Attorney at Law","cred.attorney2":"Professional focus on commercial and cross-border matters","cred.experience":"Several years of legal practice","cred.experience2":"Focused on specialized commercial-law matters",
+        "about.title":"Law where trade, contracts, risk and borders intersect.","about.p1":"RMK — Commercial LAW is designed to present the legal practice of Rasoul Mousavi Khadem with a specialist, business-focused perspective for companies operating in complex, multi-party and cross-border environments.","about.p2":"The approach goes beyond drafting legal text: it includes risk identification, transaction analysis, contractual structuring, dispute-resolution mechanisms and compliance considerations.",
+        "principle1.t":"Analysis","principle1.d":"Break down the issue and identify legal risk","principle2.t":"Structure","principle2.d":"Design contracts and solutions around the transaction","principle3.t":"Compliance","principle3.d":"Keep commercial and legal requirements aligned",
+        "practice.eyebrow":"Practice Areas","practice.title":"Focused legal support for commercial, international and specialist matters.","practice.lead":"The architecture is intentionally modular, so each practice area can later expand into a dedicated page with deeper articles and resources.",
+        "service.crypto.t":"Crypto-Asset Law","service.crypto.d":"Analysis of contracts and legal relationships involving digital assets, transaction risk and emerging commercial-law issues.",
+        "service.smuggle.t":"Goods & Currency Smuggling","service.smuggle.d":"Legal analysis of regulations concerning goods and currency smuggling, including criminal, regulatory and commercial dimensions.",
+        "service.contract.t":"International Contracts","service.contract.d":"Advice, review and drafting of international commercial contracts, with attention to obligations, risk, governing law and dispute resolution.",
+        "service.arb.t":"International Arbitration","service.arb.d":"Advice and representation in international arbitration matters, from arbitration clauses to dispute strategy.",
+        "service.comp.t":"Compliance Officer","service.comp.d":"Representation and compliance support for companies in reviewing requirements, managing risk and entering commercial agreements.",
+        "service.business.t":"Commercial Law Advisory","service.business.d":"Analysis of commercial structures, contractual obligations and legal risks to support informed transaction decisions.",
+        "arb.eyebrow":"Cross-Border Approach","arb.title":"From preventing disputes to designing the path to resolution.","arb.lead":"A strong legal website should not only list services; it should also communicate how legal problems are approached.",
+        "feature.dark.t":"Arbitration & Dispute Resolution","feature.dark.p":"Focus on selecting dispute mechanisms, designing contractual provisions and building a legal strategy suited to the transaction.","feature.dark.i1":"Drafting and reviewing arbitration clauses","feature.dark.i2":"Assessing timing and contractual risk","feature.dark.i3":"Structuring the legal strategy",
+        "feature.light.t":"Compliance & Contract","feature.light.p":"For companies that treat the contract as a component of commercial risk management—not merely as a document.","risk.1":"Understand the transaction and its parties","risk.2":"Identify legal and compliance risks","risk.3":"Design obligations, remedies and exit mechanisms","risk.4":"Set the dispute path and legal follow-through",
+        "articles.eyebrow":"Articles","articles.title":"Legal knowledge before legal decisions.","articles.lead":"This section establishes the content architecture for future specialist articles, research notes and practical legal commentary.","articles.cta":"Discuss a legal topic",
+        "article.label":"Article Topics","article.title":"From an international contract to a dispute: which clauses deserve attention from day one?","article.desc":"A sample of the future content style: legal analysis, practical examples and references to relevant rules—without turning the page into an advertising showcase.","article.read":"Continue reading","article2.label":"Content Architecture","article2.title":"Crypto-asset law & modern commercial contracts","article2.desc":"Future articles can be organized by topic, practice area and keyword for a cleaner knowledge base.",
+        "contact.eyebrow":"Direct Contact","contact.title":"For a legal issue, choose the starting point carefully.","contact.lead":"For consultations within the practice areas presented on this website, use the official contact channels below.","contact.card.t":"RMK — Commercial LAW","contact.card.p":"International Trade • Contracts • Arbitration • Compliance","contact.card.cta":"Call for a Consultation","contact.note":"This website is informational and promotional in nature and does not replace a case-specific review of any file, contract or legal situation.","footer.disclaimer":"© RMK Commercial LAW — All content rights reserved."
+      }
+    };
+
+    const root = document.documentElement;
+    const loader = document.getElementById('loader');
+    const header = document.getElementById('header');
+    const progress = document.getElementById('progress');
+    const topBtn = document.getElementById('topBtn');
+    const langWrap = document.getElementById('langWrap');
+    const langToggle = document.getElementById('langToggle');
+    const themeToggle = document.getElementById('themeToggle');
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('drawer');
+    const drawerClose = document.getElementById('drawerClose');
+
+    const savedLang = localStorage.getItem('rmk-lang') || 'fa';
+    const savedTheme = localStorage.getItem('rmk-theme') || 'light';
+
+    function setTheme(theme) {
+      root.dataset.theme = theme;
+      localStorage.setItem('rmk-theme', theme);
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to day mode' : 'Switch to night mode');
+    }
+
+    function setLanguage(lang) {
+      const dict = I18N[lang] || I18N.fa;
+      root.lang = lang;
+      root.dir = lang === 'en' ? 'ltr' : 'rtl';
+      document.title = lang === 'en' ? 'RMK — Commercial LAW | Rasoul Mousavi Khadem'
+        : lang === 'ar' ? 'RMK — Commercial LAW | رسول موسوي خادم'
+        : 'RMK — Commercial LAW | رسول موسوی خادم';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      const langMeta = {
+        fa: { code: 'IR', flag: 'https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/5QibQYiPMRAJx9O_6SqCmaf_5yQ-QBnv2sB2SMOTHIuixbVAdg.png' },
+        ar: { code: 'AR', flag: 'https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/m1MWBuJ7JZaxE-L0p4NBhPJxjyo-3NeaCdTxRxuWSJp0JBM50g.png' },
+        en: { code: 'Eng', flag: 'https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/NJMP_N8YLJaWDpXVC79q10VPhuI-PPeZUMaFS3eUqZmoxVxUjw.png' }
+      };
+      const currentLang = langMeta[lang] || langMeta.fa;
+      langToggle.querySelector('.lang-current-flag').src = currentLang.flag;
+      langToggle.querySelector('.lang-current-code').textContent = currentLang.code;
+      localStorage.setItem('rmk-lang', lang);
+      langWrap.classList.remove('open');
+      langToggle.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.lang-option').forEach(btn => btn.setAttribute('aria-current', btn.dataset.lang === lang ? 'true' : 'false'));
+    }
+
+    const loaderVideo = document.getElementById('loaderVideo');
+    const loaderProgressFill = document.getElementById('loaderProgressFill');
+    const HOLD_AFTER_VIDEO = 1000;
+    const FADE_TO_SITE = 1000;
+    let loaderFinished = false;
+    let progressFrame = null;
+
+    function stopLoaderProgress() {
+      if (progressFrame) cancelAnimationFrame(progressFrame);
+      progressFrame = null;
+    }
+
+    function setLoaderDone() {
+      if (!loader || loaderFinished) return;
+      loaderFinished = true;
+      stopLoaderProgress();
+      if (loaderVideo) loaderVideo.pause();
+      loader.classList.add('is-done');
+      document.body.classList.remove('no-scroll');
+      setTimeout(() => loader.remove(), FADE_TO_SITE + 120);
+    }
+
+    function startLoaderProgress() {
+      if (!loaderVideo || !loaderProgressFill) return;
+      const tick = () => {
+        if (loaderFinished) return;
+        const duration = loaderVideo.duration;
+        const ratio = Number.isFinite(duration) && duration > 0 ? Math.min(1, loaderVideo.currentTime / duration) : 0;
+        loaderProgressFill.style.width = `${ratio * 100}%`;
+        progressFrame = requestAnimationFrame(tick);
+      };
+      progressFrame = requestAnimationFrame(tick);
+    }
+
+    function completeBrandIntro() {
+      if (loaderFinished) return;
+      if (loaderProgressFill) loaderProgressFill.style.width = '100%';
+      // Keep the completed logo/video on screen for exactly one second.
+      setTimeout(setLoaderDone, HOLD_AFTER_VIDEO);
+    }
+
+    // Play the entire brand video. When it ends: 1s hold + 1s fade.
+    // The homepage is never revealed early while the video is still playing.
+    if (loaderVideo) {
+      loaderVideo.addEventListener('error', () => {
+        loader.classList.add('video-failed');
+        if (loaderProgressFill) loaderProgressFill.style.width = '100%';
+        setTimeout(setLoaderDone, 1200);
+      }, {once:true});
+      loaderVideo.addEventListener('loadedmetadata', () => {
+        try { loaderVideo.currentTime = 0; } catch (_) {}
+        startLoaderProgress();
+      }, {once:true});
+      loaderVideo.addEventListener('canplay', () => {
+        loader.classList.add('video-ready');
+        const playPromise = loaderVideo.play();
+        if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {
+          loader.classList.add('video-failed');
+          setTimeout(setLoaderDone, 1200);
+        });
+      }, {once:true});
+      loaderVideo.addEventListener('loadeddata', () => {
+        loader.classList.add('video-ready');
+        loaderVideo.play().catch(() => {});
+      }, {once:true});
+      loaderVideo.addEventListener('ended', completeBrandIntro, {once:true});
+    }
+
+    setTheme(savedTheme);
+    setLanguage(savedLang);
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+
+    langToggle.addEventListener('click', () => {
+      const open = langWrap.classList.toggle('open');
+      langToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.lang-option').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+
+    document.addEventListener('click', (e) => {
+      if (!langWrap.contains(e.target)) langWrap.classList.remove('open');
+    });
+
+    function toggleDrawer(force) {
+      const open = force ?? !drawer.classList.contains('open');
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('no-scroll', open);
+    }
+    menuToggle.addEventListener('click', () => toggleDrawer());
+    drawerClose.addEventListener('click', () => toggleDrawer(false));
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) toggleDrawer(false); });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+    // Scroll state + progress bar
+    function onScroll() {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 20);
+      topBtn.classList.toggle('visible', y > 700);
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Close language menu with Escape + keyboard focus polish
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langWrap.classList.remove('open');
+        if (drawer.classList.contains('open')) toggleDrawer(false);
+      }
+    });
+  </script>
+</body>
+</html>
