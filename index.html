@@ -88,132 +88,70 @@
       z-index: 1002;
     }
 
-    /* Loader */
+    /* Loader — logo-based, no video, cannot hang */
     .loader {
       position: fixed;
       inset: 0;
       z-index: 1001;
       background:
-        radial-gradient(circle at 70% 25%, rgba(200,169,107,.13), transparent 26%),
-        radial-gradient(circle at 25% 80%, rgba(122,31,43,.24), transparent 34%),
+        radial-gradient(circle at 72% 22%, rgba(200,169,107,.16), transparent 27%),
+        radial-gradient(circle at 18% 82%, rgba(122,31,43,.26), transparent 34%),
         var(--oxblood);
       color: var(--ivory);
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       overflow: hidden;
-      transition: opacity 1s var(--ease), visibility 1s var(--ease);
+      transition: opacity .65s var(--ease), visibility .65s var(--ease);
     }
     .loader.is-done { opacity: 0; visibility: hidden; }
-    .loader-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      background: #12080b;
-      z-index: 0;
-      opacity: 0;
-      transition: opacity .28s ease;
-    }
-    .loader.video-ready .loader-video { opacity: 1; }
-    .loader-shade {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(42,15,20,.02), rgba(42,15,20,.16));
-      pointer-events: none;
+    .loader-logo-wrap {
+      position: relative;
       z-index: 1;
-    }
-    .loader-progress-wrap {
-      position: absolute;
-      left: 50%;
-      bottom: 9vh;
-      transform: translateX(-50%);
-      width: min(360px, 66vw);
-      z-index: 3;
-      text-align: center;
-    }
-    .loader-progress {
-      width: 100%;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(232,219,190,.24);
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(232,219,190,.10), 0 6px 24px rgba(0,0,0,.16);
-    }
-    .loader-progress-fill {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #d2be91, #eadbb9, #d2be91);
-      box-shadow: 0 0 18px rgba(232,219,190,.34);
-      transition: width .08s linear;
-    }
-    .loader-loading-text {
-      margin-top: 12px;
-      color: #eadbb9;
-      font-size: .67rem;
-      letter-spacing: .42em;
-      text-transform: uppercase;
-      font-weight: 600;
-      text-indent: .42em;
-      opacity: .88;
-    }
-    .loader-fallback { display:none; }
-    .loader::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 70% 20%, rgba(200,169,107,.06), transparent 24%), linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.12));
-      pointer-events: none;
-      z-index: 1;
-    }
-    .loader-inner { position: relative; text-align: center; z-index: 3; display:none; }
-    .loader-mark {
-      width: 64px; height: 64px;
-      margin: 0 auto 22px;
-      border: 1px solid rgba(200,169,107,.68);
-      border-radius: 50%;
+      width: 150px; height: 150px;
       display: grid; place-items: center;
-      color: var(--gold-light);
-      letter-spacing: .12em;
-      font-weight: 700;
-      animation: floatMark 1.6s ease-in-out infinite;
+      border: 1px solid rgba(200,169,107,.45);
+      border-radius: 50%;
+      box-shadow: 0 0 0 14px rgba(200,169,107,.035), 0 24px 70px rgba(0,0,0,.25);
     }
-    .loader-title {
-      margin: 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.7rem, 4vw, 3.2rem);
-      letter-spacing: .08em;
-      font-weight: 700;
-    }
-    .loader-title span { color: var(--gold-light); }
-    .loader-sub {
-      margin-top: 10px;
-      font-size: .78rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: rgba(246,240,230,.62);
+    .loader-logo {
+      width: 104px; height: 104px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 28px rgba(0,0,0,.22));
+      animation: loaderPulse 1.15s ease-in-out infinite alternate;
     }
     .loader-line {
-      width: min(280px, 62vw);
-      height: 1px;
-      margin: 26px auto 0;
-      background: rgba(200,169,107,.18);
+      position: relative;
+      z-index: 1;
+      width: 150px;
+      height: 3px;
+      margin-top: 24px;
+      background: rgba(246,240,230,.16);
+      border-radius: 999px;
       overflow: hidden;
     }
-    .loader-line::after {
-      content: "";
+    .loader-line span {
       display: block;
-      width: 45%;
       height: 100%;
-      background: var(--gold);
-      animation: loadLine 1.7s var(--ease) both;
+      width: 36%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      border-radius: 999px;
+      animation: loaderBar 1.2s ease-in-out infinite;
+    }
+    .loader-text {
+      position: relative;
+      z-index: 1;
+      margin-top: 14px;
+      color: var(--gold-light);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
     }
 
-    @keyframes loaderFrame { to { transform: scale(1); } }
-    @keyframes loadLine { from { transform: translateX(-120%); } to { transform: translateX(240%); } }
-    @keyframes floatMark { 50% { transform: translateY(-5px); } }
+    @keyframes loaderPulse { from { transform: scale(.96); opacity: .84; } to { transform: scale(1.04); opacity: 1; } }
+    @keyframes loaderBar { 0% { transform: translateX(320%); } 100% { transform: translateX(-420%); } }
 
     /* Header */
     header {
@@ -1109,7 +1047,6 @@
       .hero-card-bottom { left:28px; right:28px; bottom:28px; }
       .panel-brand-mark { width:150px; opacity:.08; }
       .about-profile-copy { padding:4px 0; }
-      .loader-progress-wrap { bottom: 8vh; }
       .contact-side { padding:23px; }
       .footer-inner { flex-direction:column; text-align:center; }
     }
@@ -1229,17 +1166,16 @@
 </head>
 
 <body class="no-scroll">
+  <script>window.__rmkLoaderStartedAt = performance.now();</script>
   <div class="progress" id="progress"></div>
 
-  <!-- Brand intro: play the complete video, hold 1s, then fade to the homepage in 1s. -->
+  <!-- Brand intro: logo + progress line. Hides on window 'load' (min 1.4s), with a hard fallback timeout so it can never hang. -->
   <div class="loader" id="loader" aria-hidden="true">
-    <video class="loader-video" id="loaderVideo" autoplay muted playsinline preload="auto" >
-      <source src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/main/Final%20Comp.mp4" type="video/mp4" />
-    </video>
-    <div class="loader-shade" aria-hidden="true"></div>
-    <div class="loader-progress-wrap" aria-hidden="true">
-      <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    <div class="loader-logo-wrap">
+      <img class="loader-logo" src="https://raw.githubusercontent.com/Sar-resid-Magezin-org/upload/refs/heads/main/hyj2U06bWr0r9oNpXrx1_n36uow-3RNr80GSTgWj7EXLk7gGOA.png" alt="RMK — Commercial LAW" />
     </div>
+    <div class="loader-line" aria-hidden="true"><span></span></div>
+    <div class="loader-text">RMK — COMMERCIAL LAW</div>
   </div>
 
   <header id="header">
@@ -1796,73 +1732,36 @@
       document.querySelectorAll('.lang-option').forEach(btn => btn.setAttribute('aria-current', btn.dataset.lang === lang ? 'true' : 'false'));
     }
 
-    const loaderVideo = document.getElementById('loaderVideo');
-    const loaderProgressFill = document.getElementById('loaderProgressFill');
-    const HOLD_AFTER_VIDEO = 1000;
-    const FADE_TO_SITE = 1000;
+    // Loader: shows for a minimum time, then hides on window 'load'.
+    // A hard fallback timeout guarantees it always closes, even if some
+    // resource (image, font, script) never finishes loading.
+    const MIN_VISIBLE = 1400;   // minimum time the loader stays on screen
+    const HARD_TIMEOUT = 6000;  // absolute cap — loader is force-closed after this no matter what
+    const FADE_TO_SITE = 650;   // must match the CSS transition duration above
+    const loaderStartedAt = window.__rmkLoaderStartedAt || performance.now();
     let loaderFinished = false;
-    let progressFrame = null;
-
-    function stopLoaderProgress() {
-      if (progressFrame) cancelAnimationFrame(progressFrame);
-      progressFrame = null;
-    }
 
     function setLoaderDone() {
       if (!loader || loaderFinished) return;
       loaderFinished = true;
-      stopLoaderProgress();
-      if (loaderVideo) loaderVideo.pause();
       loader.classList.add('is-done');
       document.body.classList.remove('no-scroll');
       setTimeout(() => loader.remove(), FADE_TO_SITE + 120);
     }
 
-    function startLoaderProgress() {
-      if (!loaderVideo || !loaderProgressFill) return;
-      const tick = () => {
-        if (loaderFinished) return;
-        const duration = loaderVideo.duration;
-        const ratio = Number.isFinite(duration) && duration > 0 ? Math.min(1, loaderVideo.currentTime / duration) : 0;
-        loaderProgressFill.style.width = `${ratio * 100}%`;
-        progressFrame = requestAnimationFrame(tick);
-      };
-      progressFrame = requestAnimationFrame(tick);
+    function hideLoaderAfterMin() {
+      const elapsed = performance.now() - loaderStartedAt;
+      const remaining = Math.max(0, MIN_VISIBLE - elapsed);
+      setTimeout(setLoaderDone, remaining);
     }
 
-    function completeBrandIntro() {
-      if (loaderFinished) return;
-      if (loaderProgressFill) loaderProgressFill.style.width = '100%';
-      // Keep the completed logo/video on screen for exactly one second.
-      setTimeout(setLoaderDone, HOLD_AFTER_VIDEO);
-    }
+    if (document.readyState === 'complete') hideLoaderAfterMin();
+    else window.addEventListener('load', hideLoaderAfterMin, {once:true});
 
-    // Play the entire brand video. When it ends: 1s hold + 1s fade.
-    // The homepage is never revealed early while the video is still playing.
-    if (loaderVideo) {
-      loaderVideo.addEventListener('error', () => {
-        loader.classList.add('video-failed');
-        if (loaderProgressFill) loaderProgressFill.style.width = '100%';
-        setTimeout(setLoaderDone, 1200);
-      }, {once:true});
-      loaderVideo.addEventListener('loadedmetadata', () => {
-        try { loaderVideo.currentTime = 0; } catch (_) {}
-        startLoaderProgress();
-      }, {once:true});
-      loaderVideo.addEventListener('canplay', () => {
-        loader.classList.add('video-ready');
-        const playPromise = loaderVideo.play();
-        if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {
-          loader.classList.add('video-failed');
-          setTimeout(setLoaderDone, 1200);
-        });
-      }, {once:true});
-      loaderVideo.addEventListener('loadeddata', () => {
-        loader.classList.add('video-ready');
-        loaderVideo.play().catch(() => {});
-      }, {once:true});
-      loaderVideo.addEventListener('ended', completeBrandIntro, {once:true});
-    }
+    // Safety net: whatever happens (slow connection, a stuck request, a
+    // browser quirk), the loader can never block the site for more than
+    // HARD_TIMEOUT milliseconds.
+    setTimeout(setLoaderDone, HARD_TIMEOUT);
 
     setTheme(savedTheme);
     setLanguage(savedLang);
